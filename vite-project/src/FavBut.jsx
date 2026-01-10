@@ -5,7 +5,7 @@ export function FavBut() {
 
     return (
         <button onClick={() => setIsFav(!isFav)}>
-            {isFav ? '✘' : '👍'}
+            {isFav ? '✘' : '❤️'}
         </button>
     )
 }

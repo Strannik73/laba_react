@@ -14,35 +14,8 @@ export function MovieCard({ id, image, rating, mp4 }) {
                  will-change-transform duration-300"
       onClick={() => navigate(`/movie/${id}`)} 
     >
-      {isOpenTrailer && (
-        <Modal onClose={() => setIsOpenTrailer(false)}>
-          <div className="w-[77vw] max-w-4xl h-[35vh]">
-            <video
-              src={mp4}
-              controls
-              muted
-              autoPlay
-              style={{ width: 600 }}
-              onError={(e) => console.log('VIDEO ERROR', e)}
-            />
-          </div>
-        </Modal>
-      )}
-
       <img src={image} alt="Movie Poster" className="w-full h-auto object-cover" />
 
-      <div className="absolute top-2 right-2 z-10 px-1 py-1 flex items-center gap-1">
-        <FavBut />
-        <button
-          className="btn"
-          onClick={(e) => {
-            e.stopPropagation()           
-            setIsOpenTrailer(true)
-          }}
-        >
-          ▶
-        </button>
-      </div>
 
       <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-2 text-sm text-white font-semibold">
         Рейтинг: {rating}

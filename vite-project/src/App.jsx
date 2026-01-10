@@ -20,7 +20,6 @@ function App() {
           src="/kino.jpg"
           width={250}
           alt='ci'
-          // style={}
           className='h-24 w-25 rounded-4xl'
         />
 
@@ -47,7 +46,8 @@ function App() {
         {movies.length ? (
           movies.map(movie =>(
             <MovieCard 
-              key={movie.name}
+              key={movie.id}
+              id={movie.id} 
               image={movie.image} 
               rating={movie.rating}
               mp4={movie.mp4}

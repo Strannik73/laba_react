@@ -1,6 +1,6 @@
 export const MOVIES = [
     {
-        name: 'Рэмбо',
+        name: 'Рэмбо первая кровь',
         id: '1ramb',
         image: '/rambo.jpg',
         rating: 7.9,

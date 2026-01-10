@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { MOVIES } from './movies'
 import { Modal } from './components/ui/Modal'
+import { FavBut } from './FavBut'
 import { useTheme } from './hooks/useTheme'
 
 export function MovieDetails() {
@@ -9,7 +10,7 @@ export function MovieDetails() {
   const { id } = useParams()
   const { theme } = useTheme()
 
-  const movie = useMemo(() => MOVIES.find(m => m.id === id), [id])
+  const movie = useMemo(() => MOVIES.find(m => String(m.id) === String(id)), [id])
 
   if (!movie) return <p className="text-center mt-10 text-gray-400">Фильм не найден</p>
 
@@ -35,7 +36,22 @@ export function MovieDetails() {
           </div>
         </div>
 
+        {isOpenTrailer && (
+          <Modal onClose={() => setIsOpenTrailer(false)}>
+            <div className="w-[77vw] max-w-4xl h-[35vh]">
+              <video
+                src={movie.mp4}
+                controls
+                muted
+                autoPlay
+                className="w-full h-full object-contain"
+                onError={(e) => console.log('VIDEO ERROR', e)}
+              />
+            </div>
+          </Modal>
+        )}
         <div className="absolute top-2 right-2 z-10 px-1 py-1 flex items-center gap-1">
+          <FavBut />
           <button
             className="btn"
             onClick={(e) => {
@@ -43,25 +59,11 @@ export function MovieDetails() {
               setIsOpenTrailer(true)
             }}
           >
-            ▶
+            ▶ СМОТРЕТЬ
           </button>
         </div>
       </div>
 
-      {isOpenTrailer && (
-        <Modal onClose={() => setIsOpenTrailer(false)}>
-          <div className="w-[77vw] max-w-4xl h-[35vh]">
-            <video
-              src={movie.mp4}
-              controls
-              muted
-              autoPlay
-              className="w-full h-full object-contain"
-              onError={(e) => console.log('VIDEO ERROR', e)}
-            />
-          </div>
-        </Modal>
-      )}
     </div>
   )
 }
