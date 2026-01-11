@@ -14,7 +14,7 @@ export function MovieCard({ id, image, rating, mp4 }) {
                  will-change-transform duration-300"
       onClick={() => navigate(`/movie/${id}`)} 
     >
-      <img src={image} alt="Movie Poster" className="w-full h-auto object-cover" />
+      <img src={image} alt="Movie Poster" className="w-full h-[360px] object-cover" />
 
 
       <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-2 text-sm text-white font-semibold">

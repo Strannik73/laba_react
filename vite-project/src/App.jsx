@@ -42,7 +42,7 @@ function App() {
           </button>
         </div>
       </header>
-      <main className="flex gap-6">
+      <main className="grid gap-6 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
         {movies.length ? (
           movies.map(movie =>(
             <MovieCard 
